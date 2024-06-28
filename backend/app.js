@@ -30,7 +30,7 @@ mongoose
 .connect(`mongodb+srv://admin:${process.env.MONGODB_PASSWORD}@cluster0.9zucsis.mongodb.net/?retryWrites=true&w=majority`
 )
 .then(()=> 
-app.listen(5000,()=>
+app.listen(5000,'0.0.0.0',()=>
     console.log("Connected to Database and Server is running")
 ))
 .catch((e) => console.log(e));
