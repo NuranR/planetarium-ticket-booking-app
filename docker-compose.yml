@@ -8,6 +8,9 @@ services:
     tty: true
     networks:
       - app-network
+    environment:
+      - MONGODB_PASSWORD=adminpass
+      - SECRET_KEY=MYSECRET
 
   frontend:
     build: ./frontend
