@@ -4,8 +4,6 @@ FROM node:17-alpine
 
 RUN rm -rf /root/.npm
 
-# Clear npm cache and install dependencies including nodemon
-RUN npm cache clean --force && npm install -g nodemon
 
 # Set working directory
 WORKDIR /app
@@ -20,4 +18,4 @@ RUN npm install
 COPY . .
 
 # Start the application using nodemon
-CMD ["npm", "start"]
+CMD ["node", "app.js"]
