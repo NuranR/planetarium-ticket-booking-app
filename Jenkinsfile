@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    // Checkout the code from  git
+                    // Checkout the code from git
                     checkout scm
                 }
             }
@@ -17,8 +17,8 @@ pipeline {
                     steps {
                         script {
                             dir('backend') {
-                                // Build the Docker image for the backend
-                                sh 'docker build -t backend:latest .'
+                                // Build the Docker image for the backend without using cache
+                                sh 'docker build --no-cache -t backend:latest .'
                             }
                         }
                     }
@@ -28,8 +28,8 @@ pipeline {
                     steps {
                         script {
                             dir('frontend') {
-                                // Build the Docker image for the frontend
-                                sh 'docker build -t frontend:latest .'
+                                // Build the Docker image for the frontend without using cache
+                                sh 'docker build --no-cache -t frontend:latest .'
                             }
                         }
                     }
@@ -40,7 +40,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    // Deploy the Docker containers 
+                    // Deploy the Docker containers
                     sh 'docker-compose up -d'
                 }
             }
