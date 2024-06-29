@@ -1,16 +1,23 @@
+# Use node 17 alpine image
 FROM node:17-alpine
 
-RUN npm install nodemon
 
-WORKDIR /application
+RUN rm -rf /root/.npm
 
-COPY package.json . . 
+# Clear npm cache and install dependencies including nodemon
+RUN npm cache clean --force && npm install -g nodemon
 
+# Set working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package.json package-lock.json ./
+
+# Install dependencies
 RUN npm install
 
+# Copy the rest of the application files
 COPY . .
 
-
-EXPOSE 5000
-
+# Start the application using nodemon
 CMD ["npm", "start"]
