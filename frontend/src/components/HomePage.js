@@ -4,6 +4,7 @@ import MovieItem from './Movies/MovieItem'
 import { Link } from 'react-router-dom'
 import { getAllMovies } from '../api-helpers/api-helpers'
 
+// HomePage
 const HomePage = () => {
     const [movies, setMovies] = useState([]);
     useEffect(() => {
@@ -17,7 +18,7 @@ const HomePage = () => {
             <img src="./images/stars-banner.jpg" alt="stars-banner" width="100%" height="100%"/>
         </Box>
         <Box padding={5} margin="auto">
-            <Typography variant='h4' textAlign={"center"}> Latest Releases! </Typography>
+            <Typography variant='h4' textAlign={"center"}> Latest Releases </Typography>
 
         </Box>
         <Box margin={"auto"} display="flex" width="80%" justifyContent={"center"} flexWrap={"wrap"}>
