@@ -17,8 +17,8 @@ pipeline {
                     steps {
                         script {
                             dir('backend') {
-                                // Build the Docker image for the backend
-                                powershell 'docker build -t backend:latest .'
+                                // Build the Docker image for the backend without using cache
+                                powershell 'docker build --no-cache -t backend:latest .'
                             }
                         }
                     }
@@ -28,8 +28,8 @@ pipeline {
                     steps {
                         script {
                             dir('frontend') {
-                                // Build the Docker image for the frontend
-                                powershell 'docker build -t frontend:latest .'
+                                // Build the Docker image for the frontend without using cache
+                                powershell 'docker build --no-cache -t frontend:latest .'
                             }
                         }
                     }
