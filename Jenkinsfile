@@ -18,7 +18,7 @@ pipeline {
                         script {
                             dir('backend') {
                                 // Build the Docker image for the backend
-                                sh 'docker build -t backend:latest .'
+                                sh 'sudo docker build -t backend:latest .'
                             }
                         }
                     }
@@ -29,7 +29,7 @@ pipeline {
                         script {
                             dir('frontend') {
                                 // Build the Docker image for the frontend
-                                sh 'docker build -t frontend:latest .'
+                                sh 'sudo docker build -t frontend:latest .'
                             }
                         }
                     }
@@ -41,7 +41,7 @@ pipeline {
             steps {
                 script {
                     // Deploy the Docker containers 
-                    sh 'docker-compose up -d'
+                    sh 'sudo docker-compose up -d'
                 }
             }
         }
@@ -51,7 +51,7 @@ pipeline {
         always {
             script {
                 // Cleanup unused Docker images
-                sh 'docker system prune -f'
+                sh 'sudo docker system prune -f'
             }
         }
 
